@@ -23,7 +23,7 @@ class CustomerSearchTerm
     @order = "last_name asc"
   end
 
-  def build_for_email_search
+  def build_for_email_search(search_term)
     @where_clause << case_insensitive_search(:first_name)
     @where_args[:first_name] = starts_with(extract_name(search_term))
 
