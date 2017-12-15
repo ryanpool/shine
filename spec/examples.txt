@@ -1,0 +1,4 @@
+example_id                                   | status | run_time        |
+-------------------------------------------- | ------ | --------------- |
+./spec/features/customer_search_spec.rb[1:1] | failed | 16.53 seconds   |
+./spec/models/user_spec.rb[1:1:1]            | passed | 0.02906 seconds |
