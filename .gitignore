@@ -7,6 +7,9 @@
 # Ignore RubyMine
 /.idea
 
+# Ignore Webpack test packs
+/public/packs-test
+
 # Ignore bundler config.
 /.bundle
 

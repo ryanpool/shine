@@ -40,6 +40,7 @@ RSpec.feature "Customer Search" do
     # Login to get access to /customers
     fill_in "Email",    with: email
     fill_in "Password", with: password
+
     click_button "Log in"
 
     within "section.search-form" do
@@ -55,6 +56,43 @@ RSpec.feature "Customer Search" do
       expect(list_group_items[0]).to have_content("Dobbs")
       expect(list_group_items[3]).to have_content("I.T.")
       expect(list_group_items[3]).to have_content("Pat")
+    end
+  end
+
+  scenario "Search by Email" do
+    visit "/customers"
+
+    # Login to get access to /customers
+    fill_in "Email",    with: email
+    fill_in "Password", with: password
+
+    click_button "Log in"
+
+    within "section.search-form" do
+      fill_in "keywords", with: 'pat123@somewhere.net'
+    end
+
+    within "section.search-results" do
+      expect(page).to have_content("Results")
+      expect(page.all("ol li.list-group-item").count).to eq(4)
+
+      list_group_items = page.all("ol li.list-group-item")
+      expect(list_group_items[0]).to have_content("Pat")
+      expect(list_group_items[0]).to have_content("Jones")
+      expect(list_group_items[1]).to have_content("Patricia")
+      expect(list_group_items[1]).to have_content("Dobbs")
+      expect(list_group_items[3]).to have_content("I.T.")
+      expect(list_group_items[3]).to have_content("Pat")
+    end
+    click_on "View Details...", match: :first
+
+    customer = Customer.find_by!(email: 'pat123@somewhere.net')
+    within "section.customer-details" do
+      expect(page).to have_content(customer.id)
+      expect(page).to have_content(customer.first_name)
+      expect(page).to have_content(customer.last_name)
+      expect(page).to have_content(customer.email)
+      expect(page).to have_content(customer.username)
     end
   end
 end
