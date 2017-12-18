@@ -24,6 +24,7 @@ var CustomerDetailsComponent = Component({
         };
         var customerGetSuccess = function(response) {
             self.customer = response.json().customer;
+            alert(response.json().customer);
         };
         var routeSuccess = function(params) {
             self.http.get(

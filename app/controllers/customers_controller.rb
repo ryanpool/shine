@@ -25,9 +25,11 @@ class CustomersController < ApplicationController
   end
 
   def show
-    customer = Customer.find(params[:id])
+    # CustomerDetail hits our Postgres materialized view
+    customer_detail = CustomerDetail.find(params[:id])
+    puts "Rails customer controller show yields #{customer_detail.inspect}"
     respond_to do |format|
-      format.json { render json: {customer: customer } }
+      format.json { render json: {customer: customer_detail } }
     end
   end
 

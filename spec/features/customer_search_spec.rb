@@ -1,24 +1,48 @@
 require 'rails_helper'
 
 RSpec.feature "Customer Search" do
-  let(:email)     { 'pat@example.com' }
-  let(:password)  { 'password123' }
   def create_test_user(email:, password:)
     User.create!(
             email: email,
             password: password,
             password_confirmation: password)
   end
+
   def create_customer(first_name:, last_name:, email: nil)
     username = "#{Faker::Internet.user_name}#{rand(1000)}"
     email ||= "#{username}#{rand(1000)}@" + "#{Faker::Internet.domain_name}"
-    Customer.create!(
-                first_name: first_name,
-                last_name: last_name,
-                username: username,
-                email: email
+
+    customer = Customer.create!(
+        first_name: first_name,
+        last_name: last_name,
+        username: username,
+        email: email
+    )
+
+    customer.create_customers_billing_address(address: create_address)
+    customer.customers_shipping_address.create!(address: create_address, primary: true)
+    puts "Created Customer #{customer.inspect}"
+    puts "Created Customer Shipping Address #{customer.customers_shipping_address.first.inspect}"
+    puts "Created Customer Billing Address #{customer.customers_billing_address.inspect}"
+
+    customer
+  end
+
+  def create_address
+    state = State.find_or_create_by!(
+                     code: Faker::Address.state_abbr,
+                     name: Faker::Address.state
+    )
+    Address.create!(
+               street: Faker::Address.street_address,
+               city: Faker::Address.city,
+               state: state,
+               zipcode: Faker::Address.zip
     )
   end
+
+  let(:email)     { 'pat@example.com' }
+  let(:password)  { 'password123' }
 
   before do
     create_test_user(email: email, password: password)
@@ -87,8 +111,12 @@ RSpec.feature "Customer Search" do
     click_on "View Details...", match: :first
 
     customer = Customer.find_by!(email: 'pat123@somewhere.net')
+
     within "section.customer-details" do
-      expect(page).to have_content(customer.id)
+      puts page.html
+
+      # this isn't commented out in downloaded code but I believe we removed the ID from the view several steps ago
+      # expect(page).to have_content(customer.id)
       expect(page).to have_content(customer.first_name)
       expect(page).to have_content(customer.last_name)
       expect(page).to have_content(customer.email)
