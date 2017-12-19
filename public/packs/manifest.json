@@ -1,0 +1,15 @@
+{
+  "_/_/node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.eot": "/packs/_/_/node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular-f4769f9bdb7466be65088239c12046d1.eot",
+  "_/_/node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.svg": "/packs/_/_/node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular-89889688147bd7575d6327160d64e760.svg",
+  "_/_/node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf": "/packs/_/_/node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular-e18bbf611f2a2e43afc071aa2f4e1512.ttf",
+  "_/_/node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.woff": "/packs/_/_/node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular-fa2772327f55d8198301fdb8bcfc8158.woff",
+  "_/_/node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2": "/packs/_/_/node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular-448c34a56d699c29117adc64c43affeb.woff2",
+  "application.css": "/packs/application-52c7293823d3fa367e8296c8c85237f3.css",
+  "application.css.map": "/packs/application-52c7293823d3fa367e8296c8c85237f3.css.map",
+  "application.js": "/packs/application-2ab0e4f0768476132b17.js",
+  "application.js.map": "/packs/application-2ab0e4f0768476132b17.js.map",
+  "customers.js": "/packs/customers-b68ab8cdda44537c2590.js",
+  "customers.js.map": "/packs/customers-b68ab8cdda44537c2590.js.map",
+  "hello_angular.js": "/packs/hello_angular-cc77f92d58cfff87c9fa.js",
+  "hello_angular.js.map": "/packs/hello_angular-cc77f92d58cfff87c9fa.js.map"
+}

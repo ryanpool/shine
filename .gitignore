@@ -8,7 +8,8 @@
 /.idea
 
 # Ignore Webpack test packs
-/public/packs-test
+# /public/packs-test
+# /public/packs
 
 # Ignore bundler config.
 /.bundle
@@ -23,6 +24,4 @@
 /yarn-error.log
 
 .byebug_history
-/public/packs
-/public/packs-test-old
 /node_modules
